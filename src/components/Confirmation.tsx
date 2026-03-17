@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { format, parse } from 'date-fns'
 import { formatDuration, getTimeUntil } from '@/lib/scheduling'
 import { getServicePrice, shop } from '@/lib/data'
+import { NavigationHeader } from '@/components/NavigationHeader'
 import type { Service, Barber } from '@/lib/types'
 
 interface ConfirmationProps {
@@ -40,6 +41,9 @@ export function Confirmation({ service, barber, date, time, customerName, onBook
 
   return (
     <div className="min-h-screen pb-24">
+      <div className="sticky top-0 z-20">
+        <NavigationHeader />
+      </div>
       <div className="px-4 pt-12 pb-6">
         <motion.div
           initial={{ scale: 0 }}

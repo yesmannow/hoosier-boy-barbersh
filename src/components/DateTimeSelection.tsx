@@ -5,6 +5,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { format } from 'date-fns'
 import { getNext14Days, generateTimeSlots } from '@/lib/scheduling'
 import { cn } from '@/lib/utils'
+import { NavigationHeader } from '@/components/NavigationHeader'
 import type { Service, Barber, TimeSlot } from '@/lib/types'
 
 interface DateTimeSelectionProps {
@@ -45,15 +46,10 @@ export function DateTimeSelection({ service, barber, onSelectDateTime, onBack }:
 
   return (
     <div className="min-h-screen pb-32">
-      <div className="px-4 pt-6 pb-4 sticky top-0 bg-background/95 backdrop-blur border-b border-border z-10">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onBack}
-          className="mb-3 -ml-2 text-muted-foreground hover:text-foreground"
-        >
-          ← Back
-        </Button>
+      <div className="sticky top-0 z-20">
+        <NavigationHeader showBackButton onBack={onBack} />
+      </div>
+      <div className="px-4 pt-6 pb-4 border-b border-border">
         <h1 className="text-3xl font-bold tracking-tight">Pick Date & Time</h1>
         <p className="text-sm text-muted-foreground mt-1">Select your preferred appointment slot</p>
       </div>

@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { User, Users } from '@phosphor-icons/react'
 import { barbers, getServicePrice } from '@/lib/data'
+import { NavigationHeader } from '@/components/NavigationHeader'
 import type { Service, Barber } from '@/lib/types'
 
 interface BarberSelectionProps {
@@ -42,15 +43,10 @@ export function BarberSelection({ service, onSelectBarber, onBack }: BarberSelec
 
   return (
     <div className="min-h-screen pb-24">
-      <div className="px-4 pt-6 pb-4 sticky top-0 bg-background/95 backdrop-blur border-b border-border z-10">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onBack}
-          className="mb-3 -ml-2 text-muted-foreground hover:text-foreground"
-        >
-          ← Back
-        </Button>
+      <div className="sticky top-0 z-20">
+        <NavigationHeader showBackButton onBack={onBack} />
+      </div>
+      <div className="px-4 pt-6 pb-4 border-b border-border">
         <h1 className="text-3xl font-bold tracking-tight">Choose Your Barber</h1>
         <p className="text-sm text-muted-foreground mt-1">Select a barber or choose next available</p>
       </div>

@@ -10,6 +10,7 @@ import { format, parse } from 'date-fns'
 import { formatDuration } from '@/lib/scheduling'
 import { getServicePrice } from '@/lib/data'
 import { shop } from '@/lib/data'
+import { NavigationHeader } from '@/components/NavigationHeader'
 import type { Service, Barber } from '@/lib/types'
 
 interface CustomerDetailsProps {
@@ -88,15 +89,10 @@ export function CustomerDetails({
 
   return (
     <div className="min-h-screen pb-32">
-      <div className="px-4 pt-6 pb-4 sticky top-0 bg-background/95 backdrop-blur border-b border-border z-10">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onBack}
-          className="mb-3 -ml-2 text-muted-foreground hover:text-foreground"
-        >
-          ← Back
-        </Button>
+      <div className="sticky top-0 z-20">
+        <NavigationHeader showBackButton onBack={onBack} />
+      </div>
+      <div className="px-4 pt-6 pb-4 border-b border-border">
         <h1 className="text-3xl font-bold tracking-tight">Your Details</h1>
         <p className="text-sm text-muted-foreground mt-1">Complete your booking information</p>
       </div>

@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import { Clock, MapPin, Star, Phone } from '@phosphor-icons/react'
 import { services, barbers, getServicePriceLabel, shop, serviceGroups } from '@/lib/data'
 import { formatDuration } from '@/lib/scheduling'
+import { NavigationHeader } from '@/components/NavigationHeader'
 import type { Service } from '@/lib/types'
 
 interface ServiceSelectionWithSidebarProps {
@@ -62,9 +63,12 @@ export function ServiceSelectionWithSidebar({ onSelectService }: ServiceSelectio
 
   return (
     <div className="min-h-screen">
+      <div className="sticky top-0 z-20">
+        <NavigationHeader />
+      </div>
       <div className="lg:grid lg:grid-cols-[1fr_380px] lg:gap-8 max-w-[1400px] mx-auto">
         <div className="pb-24 lg:pb-8">
-          <div className="px-4 lg:px-6 pt-6 pb-6 sticky top-0 bg-background/95 backdrop-blur border-b border-border z-10">
+          <div className="px-4 lg:px-6 pt-6 pb-6 border-b border-border">
             <div className="mb-2">
               <h1 className="text-2xl lg:text-3xl font-bold tracking-tight mb-1">
                 {shop.name}
