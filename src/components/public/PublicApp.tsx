@@ -35,7 +35,7 @@ export function PublicApp() {
       </div>
 
       <nav className="fixed bottom-0 left-0 right-0 bg-card border-t border-border z-50">
-        <div className="flex items-center justify-around max-w-lg mx-auto">
+        <div className="flex items-center justify-around max-w-5xl mx-auto">
           <button
             onClick={() => setCurrentView('home')}
             className={`flex flex-col items-center gap-1 py-3 px-4 transition-colors ${

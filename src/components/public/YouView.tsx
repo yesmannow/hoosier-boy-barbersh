@@ -96,7 +96,7 @@ export function YouView({ onNavigate }: YouViewProps) {
   return (
     <div className="min-h-screen bg-background">
       <div className="bg-card border-b border-border sticky top-0 z-10">
-        <div className="max-w-lg mx-auto px-4 py-4">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <h1 className="font-bold text-2xl">Your Profile</h1>
           <p className="text-muted-foreground text-sm mt-1">
             Quick access to your bookings and preferences
@@ -104,7 +104,7 @@ export function YouView({ onNavigate }: YouViewProps) {
         </div>
       </div>
 
-      <div className="max-w-lg mx-auto px-4 py-6 space-y-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {customerProfile?.name && (
           <Card className="p-5">
             <div className="flex items-start gap-4">

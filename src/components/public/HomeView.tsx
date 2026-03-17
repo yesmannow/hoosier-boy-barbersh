@@ -57,8 +57,8 @@ export function HomeView({ onNavigate }: HomeViewProps) {
           className="w-full h-[400px] object-cover"
         />
         
-        <div className="absolute inset-x-0 top-0 z-20 pt-8 pb-12 px-4">
-          <div className="max-w-lg mx-auto space-y-6">
+        <div className="absolute inset-x-0 top-0 z-20 pt-8 pb-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto space-y-6">
             <div className="bg-card/90 backdrop-blur-sm rounded-2xl p-6 border border-border/50">
               <img
                 src={shopProfile.logoImage}
@@ -111,7 +111,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
         </div>
       </div>
 
-      <div className="max-w-lg mx-auto px-4 py-6 space-y-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         <Card className="p-5 border-primary/20">
           <h2 className="font-semibold text-lg mb-3">About Us</h2>
           <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -138,7 +138,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
               View All <ArrowRight size={16} className="ml-1" />
             </Button>
           </div>
-          <div className="grid grid-cols-1 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {barberProfiles.map((barber) => (
               <Card 
                 key={barber.id} 
@@ -182,7 +182,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
               </span>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {reviewHighlights.quotes.slice(0, 3).map((quote) => (
               <Card key={quote.id} className="p-4">
                 <div className="flex gap-1 mb-2">

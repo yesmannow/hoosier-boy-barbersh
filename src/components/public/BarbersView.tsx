@@ -41,7 +41,7 @@ export function BarbersView() {
   return (
     <div className="min-h-screen bg-background">
       <div className="bg-card border-b border-border sticky top-0 z-10">
-        <div className="max-w-lg mx-auto px-4 py-4">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <h1 className="font-bold text-2xl">Our Barbers</h1>
           <p className="text-muted-foreground text-sm mt-1">
             Expert craftsmen dedicated to your style
@@ -49,7 +49,7 @@ export function BarbersView() {
         </div>
       </div>
 
-      <div className="max-w-lg mx-auto px-4 py-6 space-y-4">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {barberProfiles.map((barber) => {
           const barberServices = getBarberServices(barber.id)
           

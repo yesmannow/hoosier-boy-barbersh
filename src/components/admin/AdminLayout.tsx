@@ -30,18 +30,18 @@ export function AdminLayout({ children, currentView, onViewChange, userRole, bar
 
   return (
     <div className="flex h-screen bg-background text-foreground overflow-hidden">
-      <aside className="w-64 bg-card border-r border-border flex flex-col">
-        <div className="p-6 border-b border-border">
-          <img src={logo} alt="Hoosier Boy Barbershop" className="h-12 w-auto mx-auto" />
+      <aside className="w-56 bg-card border-r border-border flex flex-col flex-shrink-0">
+        <div className="p-5 border-b border-border">
+          <img src={logo} alt="Hoosier Boy Barbershop" className="h-10 w-auto mx-auto" />
           {barberName && (
-            <div className="mt-4 text-center">
-              <p className="text-sm text-muted-foreground">Logged in as</p>
-              <p className="text-sm font-semibold text-primary">{barberName}</p>
+            <div className="mt-3 text-center">
+              <p className="text-xs text-muted-foreground">Logged in as</p>
+              <p className="text-xs font-semibold text-primary">{barberName}</p>
             </div>
           )}
         </div>
 
-        <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+        <nav className="flex-1 overflow-y-auto p-3 space-y-1">
           {allowedNav.map((item) => {
             const Icon = item.icon
             return (
@@ -55,23 +55,25 @@ export function AdminLayout({ children, currentView, onViewChange, userRole, bar
                     : 'text-foreground hover:bg-secondary'
                 )}
               >
-                <Icon size={20} weight={currentView === item.id ? 'fill' : 'regular'} />
+                <Icon size={18} weight={currentView === item.id ? 'fill' : 'regular'} />
                 <span>{item.label}</span>
               </button>
             )
           })}
         </nav>
 
-        <div className="p-4 border-t border-border">
+        <div className="p-3 border-t border-border">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <User size={16} />
+            <User size={14} />
             <span>{userRole === 'owner' ? 'Admin' : 'Barber'} Account</span>
           </div>
         </div>
       </aside>
 
       <main className="flex-1 overflow-y-auto">
-        {children}
+        <div className="max-w-[1600px] mx-auto">
+          {children}
+        </div>
       </main>
     </div>
   )

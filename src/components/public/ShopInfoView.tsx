@@ -38,7 +38,7 @@ export function ShopInfoView() {
   return (
     <div className="min-h-screen bg-background">
       <div className="bg-card border-b border-border sticky top-0 z-10">
-        <div className="max-w-lg mx-auto px-4 py-4">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <h1 className="font-bold text-2xl">Shop Info</h1>
           <p className="text-muted-foreground text-sm mt-1">
             Everything you need to know
@@ -46,7 +46,7 @@ export function ShopInfoView() {
         </div>
       </div>
 
-      <div className="max-w-lg mx-auto px-4 py-6 space-y-4">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-4">
         <Card className="overflow-hidden">
           <img
             src={stationImage?.imagePath}
