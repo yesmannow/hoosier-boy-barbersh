@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { contactInfo, shopProfile, galleryItems, externalLinks } from '@/lib/adminData'
+import { useSEO, SEO_DEFAULTS } from '@/lib/seo'
 import { 
   MapPin, 
   Phone, 
@@ -13,6 +14,7 @@ import {
 } from '@phosphor-icons/react'
 
 export function ShopInfoView() {
+  useSEO(SEO_DEFAULTS.shopInfo)
   const formatHours = () => {
     const days: Array<{ day: string; hours: string; isOpen: boolean }> = []
     

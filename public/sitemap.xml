@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://hoosierboybarbershop.com/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://hoosierboybarbershop.com/src/assets/images/Hoosierboy_Barbershop_logo_1.png</image:loc>
+      <image:title>Hoosier Boy Barbershop Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://hoosierboybarbershop.com/src/assets/images/20230518_134642-1024x768.jpg</image:loc>
+      <image:title>Hoosier Boy Barbershop Team</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Book Appointment Page -->
+  <url>
+    <loc>https://hoosierboybarbershop.com/book</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Barbers Page -->
+  <url>
+    <loc>https://hoosierboybarbershop.com/barbers</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Shop Info Page -->
+  <url>
+    <loc>https://hoosierboybarbershop.com/shop-info</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Services -->
+  <url>
+    <loc>https://hoosierboybarbershop.com/services/haircut</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hoosierboybarbershop.com/services/beard-trim</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hoosierboybarbershop.com/services/hair-and-beard</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hoosierboybarbershop.com/services/hair-replacement</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Barber Profiles -->
+  <url>
+    <loc>https://hoosierboybarbershop.com/barbers/jimmy-bissonette</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://hoosierboybarbershop.com/barbers/nate-gouty</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Gallery -->
+  <url>
+    <loc>https://hoosierboybarbershop.com/gallery</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://hoosierboybarbershop.com/src/assets/images/20230518_130811-2-1024x728.jpg</image:loc>
+      <image:title>Barbershop Tools and Station</image:title>
+    </image:image>
+  </url>
+  
+</urlset>

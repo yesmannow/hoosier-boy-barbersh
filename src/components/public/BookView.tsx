@@ -5,6 +5,7 @@ import { DateTimeSelection } from '../DateTimeSelection'
 import { CustomerDetails } from '../CustomerDetails'
 import { Confirmation } from '../Confirmation'
 import { useKV } from '@github/spark/hooks'
+import { useSEO, SEO_DEFAULTS } from '@/lib/seo'
 import type { Service, Barber, CustomerProfile, Appointment } from '@/lib/types'
 import { ArrowLeft } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
@@ -16,6 +17,7 @@ interface BookViewProps {
 }
 
 export function BookView({ onNavigate }: BookViewProps) {
+  useSEO(SEO_DEFAULTS.book)
   const [currentStep, setCurrentStep] = useState<BookingStep>('service')
   const [selectedService, setSelectedService] = useState<Service | null>(null)
   const [selectedBarber, setSelectedBarber] = useState<Barber | null>(null)

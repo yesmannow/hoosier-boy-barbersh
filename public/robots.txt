@@ -1,0 +1,20 @@
+# Hoosier Boy Barbershop - Robots.txt
+# Allow all search engines to index the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://hoosierboybarbershop.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
+
+# Block admin/internal areas (if needed in future)
+# Disallow: /admin
+# Disallow: /api
+
+# Allow specific important pages
+Allow: /book
+Allow: /barbers
+Allow: /shop-info

@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { shopProfile, barberProfiles, reviewHighlights, galleryItems, contactInfo } from '@/lib/adminData'
+import { useSEO, SEO_DEFAULTS } from '@/lib/seo'
 import { 
   Phone, 
   MapPin, 
@@ -16,6 +17,7 @@ interface HomeViewProps {
 }
 
 export function HomeView({ onNavigate }: HomeViewProps) {
+  useSEO(SEO_DEFAULTS.home)
   const heroImage = galleryItems.find(g => g.featured && g.sortOrder === 1)
   const todayDay = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][new Date().getDay()] as keyof typeof contactInfo.hours
   const todayHours = contactInfo.hours[todayDay]

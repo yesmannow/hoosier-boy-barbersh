@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { barberProfiles } from '@/lib/adminData'
 import { adminServices as services } from '@/lib/adminData'
+import { useSEO, SEO_DEFAULTS } from '@/lib/seo'
 import { 
   Scissors, 
   CalendarPlus,
@@ -12,6 +13,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 
 export function BarbersView() {
+  useSEO(SEO_DEFAULTS.barbers)
   const [selectedBarber, setSelectedBarber] = useState<string | null>(null)
 
   const selectedBarberProfile = barberProfiles.find(b => b.id === selectedBarber)
