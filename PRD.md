@@ -1,14 +1,14 @@
-# Hoosier Boy Barbershop — Premium Booking App
+# Hoosier Boy Barbershop — Companion App & Admin Platform
 
-A premium mobile-first booking application for Hoosier Boy Barbershop in Noblesville, Indiana that replaces traditional booking platforms with a frictionless, brand-aligned customer experience.
+A premium mobile-first companion application and admin command center for Hoosier Boy Barbershop in Noblesville, Indiana. Combines customer-facing booking and shop information with internal operations management to replace traditional booking platforms with a complete, brand-aligned solution.
 
 **Experience Qualities**:
-1. **Effortless** — Booking should feel faster and more intuitive than any competing platform, with under-30-second flows for repeat customers
+1. **Effortless** — Booking and shop info should feel instant and intuitive, with under-30-second flows for repeat customers and one-tap access to essential shop features
 2. **Premium** — Every interaction should reflect the high-quality service and trusted reputation of the shop through refined visuals, smooth animations, and confident design
-3. **Personal** — The experience should feel like booking with real barbers at a real neighborhood shop, not a faceless corporate booking system
+3. **Personal** — The experience should feel like your neighborhood barbershop in your pocket, not a faceless corporate booking system
 
-**Complexity Level**: Light Application (multiple features with basic state)
-This is a focused booking wizard with service selection, scheduling, and customer data capture. It's more than a simple tool but not yet a full platform with admin controls or payment processing.
+**Complexity Level**: Complex Application (advanced functionality with multiple views)
+This is now a complete platform with public-facing customer features (booking, shop info, barber profiles, user preferences) and internal admin features (schedule management, client CRM, business intelligence). Designed to complement the main website while serving as the primary booking and operations hub.
 
 ## Essential Features
 
@@ -60,6 +60,41 @@ This is a focused booking wizard with service selection, scheduling, and custome
 - **Trigger**: User with previous booking data arrives at app
 - **Progression**: See returning user prompt → tap "Book Again" → review pre-filled selections → adjust if needed → advance directly to scheduling
 - **Success criteria**: Repeat customers can rebook in under 10 seconds
+
+### 8. Public Companion App (Phase 3)
+- **Functionality**: Mobile-first companion app with bottom navigation providing fast access to booking, shop info, barbers, and personal profile
+- **Purpose**: Creates an installable, keep-worthy app that complements the main website without duplicating it - optimized for repeat customers
+- **Trigger**: User opens app (defaults to public home view)
+- **Progression**: Browse home hub → access quick actions → explore barber profiles → check hours/contact → manage bookings in profile
+- **Success criteria**: Users can find any key information or complete any primary action within 2 taps from home
+
+### 9. Home Hub
+- **Functionality**: Premium landing screen with logo, hero image, shop overview, featured barbers, reviews, hours snapshot, and quick actions
+- **Purpose**: Single-screen access to all essential shop information and primary CTAs
+- **Trigger**: Opening the public app
+- **Progression**: View hero and branding → scan trust signals → tap primary "Book" CTA or explore quick actions
+- **Success criteria**: Communicates brand identity and provides clear next actions within 3 seconds
+
+### 10. Barbers Directory
+- **Functionality**: Detailed barber profiles with specialties, availability, featured services, and booking CTAs
+- **Purpose**: Helps customers get to know the barbers and choose who to book with
+- **Trigger**: Tap "Barbers" in bottom nav or barber card from home
+- **Progression**: Browse barber cards → tap for details → view specialties and services → book with selected barber
+- **Success criteria**: Users understand each barber's expertise and can easily book their preferred barber
+
+### 11. Shop Info Quick Reference
+- **Functionality**: Clean, scannable page with address, hours, contact methods, map link, and website link
+- **Purpose**: One-stop reference for all shop logistics
+- **Trigger**: Tap "Shop" in bottom nav or hours/contact shortcuts
+- **Progression**: View hours → check today's status → call/email/get directions → visit full website if needed
+- **Success criteria**: Users can find and act on any contact/location info within 5 seconds
+
+### 12. You Profile & Quick Actions
+- **Functionality**: Personal hub with upcoming/past appointments, favorite barber, and one-tap actions (book again, call, directions, hours)
+- **Purpose**: Personalized command center for repeat customers
+- **Trigger**: Tap "You" in bottom nav
+- **Progression**: View upcoming appointments → see booking history → use quick actions → manage preferences
+- **Success criteria**: Repeat users can rebook or contact shop faster than any other method
 
 ## Edge Case Handling
 
