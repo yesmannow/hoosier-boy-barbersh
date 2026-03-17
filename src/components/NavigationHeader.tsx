@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import logo from '@/assets/images/Hoosierboy_Barbershop_logo_1.png'
 
 interface NavigationHeaderProps {
@@ -35,12 +36,20 @@ export function NavigationHeader({ showBackButton, onBack }: NavigationHeaderPro
               ← Back
             </button>
           )}
-          <img 
+          <motion.img 
             src={logo} 
             alt="Hoosier Boy Barbershop" 
-            className={`w-auto object-contain transition-all duration-300 ${
-              isScrolled ? 'h-8' : 'h-16'
-            }`}
+            className="w-auto object-contain"
+            animate={{
+              height: isScrolled ? '2rem' : '4rem',
+              opacity: isScrolled ? 0.95 : 1
+            }}
+            transition={{
+              type: 'spring',
+              stiffness: 300,
+              damping: 30,
+              opacity: { duration: 0.2 }
+            }}
           />
         </div>
       </div>
