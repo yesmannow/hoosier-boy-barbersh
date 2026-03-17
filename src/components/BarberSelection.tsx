@@ -16,8 +16,7 @@ export function BarberSelection({ service, onSelectBarber, onBack }: BarberSelec
   const availableBarbers = barbers.filter(b => service.barberIds.includes(b.id))
 
   const BarberCard = ({ barber }: { barber: Barber }) => {
-    const price = getServicePrice(service.id, barber.id)
-    const priceLabel = price !== undefined ? `$${price}` : service.priceLabel || 'Contact for pricing'
+    const priceLabel = service.price !== undefined ? `$${service.price}` : service.priceLabel || 'Contact for pricing'
     
     return (
       <Card 

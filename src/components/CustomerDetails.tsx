@@ -84,8 +84,7 @@ export function CustomerDetails({
   }
 
   const appointmentDate = parse(date, 'yyyy-MM-dd', new Date())
-  const price = barber ? getServicePrice(service.id, barber.id) : undefined
-  const priceLabel = price !== undefined ? `$${price}` : service.priceLabel || 'Contact for pricing'
+  const priceLabel = service.price !== undefined ? `$${service.price}` : service.priceLabel || 'Contact for pricing'
 
   return (
     <div className="min-h-screen pb-32">

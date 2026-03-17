@@ -35,64 +35,114 @@ export const barbers: Barber[] = [
     name: 'Jimmy Bissonette',
     specialty: 'Classic Cuts & Beard Work',
     description: 'Expert in timeless styles and precision beard grooming',
-    services: ['haircut', 'beard-trim', 'the-hour', 'hair-beard']
+    services: ['jimmy-haircut', 'jimmy-beard-trim', 'jimmy-the-hour', 'jimmy-hair-and-beard']
   },
   {
     id: 'nate-gouty',
     name: 'Nate Gouty',
     specialty: 'Premium Cuts & Hair Systems',
     description: 'Specialist in modern styling and non-surgical hair replacement',
-    services: ['haircut', 'beard-trim', 'the-hour', 'hair-beard', 'hair-system-consult', 'hair-system-install', 'hair-system-maintenance', 'hair-system-maintenance-cut']
+    services: [
+      'nate-haircut', 
+      'nate-beard-trim', 
+      'nate-the-hour', 
+      'nate-hair-and-beard',
+      'nate-hair-replacement-consult',
+      'nate-hair-replacement-installation',
+      'nate-hair-replacement-maintenance',
+      'nate-hair-replacement-maintenance-and-cut'
+    ]
   }
 ]
 
 export const services: Service[] = [
   {
-    id: 'haircut',
+    id: 'jimmy-haircut',
     name: 'Haircut',
     duration: 30,
+    price: 45,
     description: 'Classic cut with attention to detail and finishing touches',
     category: 'popular',
-    barberIds: ['jimmy-bissonette', 'nate-gouty'],
+    barberIds: ['jimmy-bissonette'],
     badge: 'Most Booked'
   },
   {
-    id: 'beard-trim',
-    name: 'Beard Trim',
+    id: 'nate-haircut',
+    name: 'Haircut',
     duration: 30,
-    description: 'Precision beard shaping and grooming',
-    category: 'standard',
-    barberIds: ['jimmy-bissonette', 'nate-gouty']
+    price: 50,
+    description: 'Premium cut with meticulous styling and finishing',
+    category: 'popular',
+    barberIds: ['nate-gouty'],
+    badge: 'Most Booked'
   },
   {
-    id: 'the-hour',
-    name: 'The Hour',
-    duration: 60,
-    description: 'Full grooming experience with extra time for perfection',
-    category: 'premium',
-    barberIds: ['jimmy-bissonette', 'nate-gouty']
-  },
-  {
-    id: 'hair-beard',
+    id: 'jimmy-hair-and-beard',
     name: 'Hair + Beard',
     duration: 60,
+    price: 80,
     description: 'Complete haircut and beard service in one session',
     category: 'popular',
-    barberIds: ['jimmy-bissonette', 'nate-gouty'],
+    barberIds: ['jimmy-bissonette'],
     badge: 'Popular'
   },
   {
-    id: 'hair-system-consult',
-    name: 'Hair Replacement Consultation',
+    id: 'jimmy-beard-trim',
+    name: 'Beard Trim',
     duration: 30,
-    priceLabel: 'Complimentary',
+    price: 45,
+    description: 'Precision beard shaping and grooming',
+    category: 'standard',
+    barberIds: ['jimmy-bissonette']
+  },
+  {
+    id: 'jimmy-the-hour',
+    name: 'The Hour',
+    duration: 60,
+    price: 80,
+    description: 'Full grooming experience with extra time for perfection',
+    category: 'premium',
+    barberIds: ['jimmy-bissonette']
+  },
+  {
+    id: 'nate-beard-trim',
+    name: 'Beard Trim',
+    duration: 30,
+    price: 50,
+    description: 'Precision beard shaping and grooming',
+    category: 'standard',
+    barberIds: ['nate-gouty']
+  },
+  {
+    id: 'nate-the-hour',
+    name: 'The Hour',
+    duration: 60,
+    price: 85,
+    description: 'Full grooming experience with extra time for perfection',
+    category: 'premium',
+    barberIds: ['nate-gouty']
+  },
+  {
+    id: 'nate-hair-and-beard',
+    name: 'Hair + Beard',
+    duration: 60,
+    price: 85,
+    description: 'Complete haircut and beard service in one session',
+    category: 'standard',
+    barberIds: ['nate-gouty']
+  },
+  {
+    id: 'nate-hair-replacement-consult',
+    name: 'Non-Surgical Hair Replacement Consult',
+    duration: 30,
+    priceLabel: 'Contact for pricing',
     description: 'Professional consultation for non-surgical hair replacement options',
     category: 'hair-system',
     barberIds: ['nate-gouty']
   },
   {
-    id: 'hair-system-install',
-    name: 'Hair System Installation',
+    id: 'nate-hair-replacement-installation',
+    name: 'Non-Surgical Hair Replacement Installation',
     duration: 180,
     priceLabel: 'Contact for pricing',
     description: 'Complete installation of non-surgical hair replacement system',
@@ -100,8 +150,8 @@ export const services: Service[] = [
     barberIds: ['nate-gouty']
   },
   {
-    id: 'hair-system-maintenance',
-    name: 'Hair System Maintenance',
+    id: 'nate-hair-replacement-maintenance',
+    name: 'Non-Surgical Hair Replacement Maintenance',
     duration: 60,
     priceLabel: 'Contact for pricing',
     description: 'Regular maintenance and adjustment of your hair system',
@@ -109,8 +159,8 @@ export const services: Service[] = [
     barberIds: ['nate-gouty']
   },
   {
-    id: 'hair-system-maintenance-cut',
-    name: 'Hair System Maintenance + Cut',
+    id: 'nate-hair-replacement-maintenance-and-cut',
+    name: 'Non-Surgical Hair Replacement Maintenance and Cut',
     duration: 120,
     priceLabel: 'Contact for pricing',
     description: 'Full maintenance service with haircut included',
@@ -119,45 +169,61 @@ export const services: Service[] = [
   }
 ]
 
-export const servicePricing: Record<string, Record<string, number | undefined>> = {
-  'haircut': {
-    'jimmy-bissonette': 45,
-    'nate-gouty': 50
+export interface ServiceGroup {
+  id: string
+  name: string
+  serviceIds: string[]
+}
+
+export const serviceGroups: ServiceGroup[] = [
+  {
+    id: 'popular-services',
+    name: 'Popular Services',
+    serviceIds: ['jimmy-haircut', 'nate-haircut', 'jimmy-hair-and-beard']
   },
-  'beard-trim': {
-    'jimmy-bissonette': 45,
-    'nate-gouty': 50
+  {
+    id: 'services-with-jimmy',
+    name: 'Services with Jimmy',
+    serviceIds: ['jimmy-haircut', 'jimmy-beard-trim', 'jimmy-the-hour', 'jimmy-hair-and-beard']
   },
-  'the-hour': {
-    'jimmy-bissonette': 80,
-    'nate-gouty': 85
-  },
-  'hair-beard': {
-    'jimmy-bissonette': 80,
-    'nate-gouty': 85
-  },
-  'hair-system-consult': {
-    'nate-gouty': 0
-  },
-  'hair-system-install': {
-    'nate-gouty': undefined
-  },
-  'hair-system-maintenance': {
-    'nate-gouty': undefined
-  },
-  'hair-system-maintenance-cut': {
-    'nate-gouty': undefined
+  {
+    id: 'services-with-nate',
+    name: 'Services with Nate',
+    serviceIds: [
+      'nate-haircut',
+      'nate-beard-trim',
+      'nate-the-hour',
+      'nate-hair-and-beard',
+      'nate-hair-replacement-consult',
+      'nate-hair-replacement-installation',
+      'nate-hair-replacement-maintenance',
+      'nate-hair-replacement-maintenance-and-cut'
+    ]
   }
+]
+
+export const servicePricing: Record<string, number | undefined> = {
+  'jimmy-haircut': 45,
+  'jimmy-beard-trim': 45,
+  'jimmy-the-hour': 80,
+  'jimmy-hair-and-beard': 80,
+  'nate-haircut': 50,
+  'nate-beard-trim': 50,
+  'nate-the-hour': 85,
+  'nate-hair-and-beard': 85,
+  'nate-hair-replacement-consult': undefined,
+  'nate-hair-replacement-installation': undefined,
+  'nate-hair-replacement-maintenance': undefined,
+  'nate-hair-replacement-maintenance-and-cut': undefined
 }
 
-export function getServicePrice(serviceId: string, barberId: string): number | undefined {
-  return servicePricing[serviceId]?.[barberId]
+export function getServicePrice(serviceId: string): number | undefined {
+  return servicePricing[serviceId]
 }
 
-export function getServicePriceLabel(service: Service, barberId: string): string {
+export function getServicePriceLabel(service: Service): string {
   if (service.priceLabel) return service.priceLabel
-  const price = getServicePrice(service.id, barberId)
-  if (price === undefined) return 'Contact for pricing'
-  if (price === 0) return 'Complimentary'
-  return `$${price}`
+  if (service.price === undefined) return 'Contact for pricing'
+  if (service.price === 0) return 'Complimentary'
+  return `$${service.price}`
 }

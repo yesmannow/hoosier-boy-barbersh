@@ -50,7 +50,7 @@ export function ServiceSelection({ onSelectService, onBack }: ServiceSelectionPr
               <span className="text-xs">with {barberNames}</span>
             </div>
             <div className="font-bold text-primary text-base">
-              {getServicePriceLabel(service, service.barberIds[0])}
+              {getServicePriceLabel(service)}
             </div>
           </div>
         </div>

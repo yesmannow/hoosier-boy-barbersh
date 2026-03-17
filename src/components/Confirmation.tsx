@@ -20,8 +20,7 @@ interface ConfirmationProps {
 export function Confirmation({ service, barber, date, time, customerName, onBookAnother }: ConfirmationProps) {
   const [showSuccess, setShowSuccess] = useState(false)
   const appointmentDate = parse(`${date} ${time}`, 'yyyy-MM-dd h:mm a', new Date())
-  const price = barber ? getServicePrice(service.id, barber.id) : undefined
-  const priceLabel = price !== undefined ? `$${price}` : service.priceLabel || 'Contact for pricing'
+  const priceLabel = service.price !== undefined ? `$${service.price}` : service.priceLabel || 'Contact for pricing'
   
   useEffect(() => {
     setTimeout(() => setShowSuccess(true), 100)
