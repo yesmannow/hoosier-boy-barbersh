@@ -1,17 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Toaster } from '@/components/ui/sonner'
 import { toast } from 'sonner'
+import { Button } from '@/components/ui/button'
 import { ServiceSelectionWithSidebar } from '@/components/ServiceSelectionWithSidebar'
 import { BarberSelection } from '@/components/BarberSelection'
 import { DateTimeSelection } from '@/components/DateTimeSelection'
 import { CustomerDetails } from '@/components/CustomerDetails'
 import { Confirmation } from '@/components/Confirmation'
+import { AdminApp } from '@/components/admin/AdminApp'
 import type { Service, Barber, CustomerProfile, Appointment } from '@/lib/types'
+import { UserCircle, Scissors } from '@phosphor-icons/react'
 
 type BookingStep = 'service' | 'barber' | 'datetime' | 'details' | 'confirmation'
+type AppMode = 'customer' | 'admin'
 
 function App() {
+  const [appMode, setAppMode] = useState<AppMode>('customer')
   const [currentStep, setCurrentStep] = useState<BookingStep>('service')
   const [selectedService, setSelectedService] = useState<Service | null>(null)
   const [selectedBarber, setSelectedBarber] = useState<Barber | null>(null)
@@ -19,7 +24,7 @@ function App() {
   const [selectedTime, setSelectedTime] = useState<string>('')
   const [customerName, setCustomerName] = useState<string>('')
 
-  const [customerProfile, setCustomerProfile, deleteCustomerProfile] = useKV<CustomerProfile>('customer-profile', {
+  const [customerProfile, setCustomerProfile] = useKV<CustomerProfile>('customer-profile', {
     name: '',
     phone: '',
     email: ''
@@ -112,8 +117,33 @@ function App() {
     setCustomerName('')
   }
 
+  if (appMode === 'admin') {
+    return <AdminApp />
+  }
+
   return (
     <>
+      <div className="fixed top-4 left-4 z-50 flex gap-2">
+        <Button 
+          onClick={() => setAppMode('customer')} 
+          variant={appMode === 'customer' ? 'default' : 'outline'}
+          size="sm"
+          className="bg-card"
+        >
+          <UserCircle size={16} className="mr-2" />
+          Customer
+        </Button>
+        <Button 
+          onClick={() => setAppMode('admin')} 
+          variant={appMode === 'admin' ? 'default' : 'outline'}
+          size="sm"
+          className="bg-card"
+        >
+          <Scissors size={16} className="mr-2" />
+          Admin
+        </Button>
+      </div>
+
       <div className="min-h-screen bg-background text-foreground">
         {currentStep === 'service' && (
           <ServiceSelectionWithSidebar 
