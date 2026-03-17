@@ -63,8 +63,7 @@ export const services: Service[] = [
     price: 45,
     description: 'Classic cut with attention to detail and finishing touches',
     category: 'popular',
-    barberIds: ['jimmy-bissonette'],
-    badge: 'Most Booked'
+    barberIds: ['jimmy-bissonette']
   },
   {
     id: 'nate-haircut',
@@ -73,8 +72,7 @@ export const services: Service[] = [
     price: 50,
     description: 'Premium cut with meticulous styling and finishing',
     category: 'popular',
-    barberIds: ['nate-gouty'],
-    badge: 'Most Booked'
+    barberIds: ['nate-gouty']
   },
   {
     id: 'jimmy-hair-and-beard',
@@ -83,8 +81,7 @@ export const services: Service[] = [
     price: 80,
     description: 'Complete haircut and beard service in one session',
     category: 'popular',
-    barberIds: ['jimmy-bissonette'],
-    badge: 'Popular'
+    barberIds: ['jimmy-bissonette']
   },
   {
     id: 'jimmy-beard-trim',
@@ -135,7 +132,7 @@ export const services: Service[] = [
     id: 'nate-hair-replacement-consult',
     name: 'Non-Surgical Hair Replacement Consult',
     duration: 30,
-    priceLabel: 'Contact for pricing',
+    priceLabel: 'Price not publicly listed',
     description: 'Professional consultation for non-surgical hair replacement options',
     category: 'hair-system',
     barberIds: ['nate-gouty']
@@ -144,7 +141,7 @@ export const services: Service[] = [
     id: 'nate-hair-replacement-installation',
     name: 'Non-Surgical Hair Replacement Installation',
     duration: 180,
-    priceLabel: 'Contact for pricing',
+    priceLabel: 'Price not publicly listed',
     description: 'Complete installation of non-surgical hair replacement system',
     category: 'hair-system',
     barberIds: ['nate-gouty']
@@ -153,7 +150,7 @@ export const services: Service[] = [
     id: 'nate-hair-replacement-maintenance',
     name: 'Non-Surgical Hair Replacement Maintenance',
     duration: 60,
-    priceLabel: 'Contact for pricing',
+    priceLabel: 'Price not publicly listed',
     description: 'Regular maintenance and adjustment of your hair system',
     category: 'hair-system',
     barberIds: ['nate-gouty']
@@ -162,7 +159,7 @@ export const services: Service[] = [
     id: 'nate-hair-replacement-maintenance-and-cut',
     name: 'Non-Surgical Hair Replacement Maintenance and Cut',
     duration: 120,
-    priceLabel: 'Contact for pricing',
+    priceLabel: 'Price not publicly listed',
     description: 'Full maintenance service with haircut included',
     category: 'hair-system',
     barberIds: ['nate-gouty']
@@ -223,7 +220,7 @@ export function getServicePrice(serviceId: string): number | undefined {
 
 export function getServicePriceLabel(service: Service): string {
   if (service.priceLabel) return service.priceLabel
-  if (service.price === undefined) return 'Contact for pricing'
+  if (service.price === undefined) return 'Price not publicly listed'
   if (service.price === 0) return 'Complimentary'
   return `$${service.price}`
 }

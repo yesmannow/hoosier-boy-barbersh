@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Clock, MapPin, Star, Phone } from '@phosphor-icons/react'
-import { services, barbers, getServicePriceLabel, shop } from '@/lib/data'
+import { services, barbers, getServicePriceLabel, shop, serviceGroups } from '@/lib/data'
 import { formatDuration } from '@/lib/scheduling'
 import type { Service } from '@/lib/types'
 
@@ -10,9 +10,13 @@ interface ServiceSelectionWithSidebarProps {
 }
 
 export function ServiceSelectionWithSidebar({ onSelectService }: ServiceSelectionWithSidebarProps) {
-  const popularServices = services.filter(s => s.category === 'popular')
-  const standardServices = services.filter(s => s.category === 'standard' || s.category === 'premium')
-  const hairSystemServices = services.filter(s => s.category === 'hair-system')
+  const popularGroup = serviceGroups.find(g => g.id === 'popular-services')
+  const jimmyGroup = serviceGroups.find(g => g.id === 'services-with-jimmy')
+  const nateGroup = serviceGroups.find(g => g.id === 'services-with-nate')
+
+  const popularServices = popularGroup ? services.filter(s => popularGroup.serviceIds.includes(s.id)) : []
+  const jimmyServices = jimmyGroup ? services.filter(s => jimmyGroup.serviceIds.includes(s.id)) : []
+  const nateServices = nateGroup ? services.filter(s => nateGroup.serviceIds.includes(s.id)) : []
 
   const ServiceCard = ({ service }: { service: Service }) => {
     const barberNames = service.barberIds.map(id => 
@@ -93,22 +97,22 @@ export function ServiceSelectionWithSidebar({ onSelectService }: ServiceSelectio
               </div>
             )}
 
-            {standardServices.length > 0 && (
+            {jimmyServices.length > 0 && (
               <div>
-                <h3 className="text-lg font-bold mb-3">All Services</h3>
+                <h3 className="text-lg font-bold mb-3">Services with Jimmy</h3>
                 <div className="space-y-3">
-                  {standardServices.map(service => (
+                  {jimmyServices.map(service => (
                     <ServiceCard key={service.id} service={service} />
                   ))}
                 </div>
               </div>
             )}
 
-            {hairSystemServices.length > 0 && (
+            {nateServices.length > 0 && (
               <div>
-                <h3 className="text-lg font-bold mb-3">Hair Replacement Services</h3>
+                <h3 className="text-lg font-bold mb-3">Services with Nate</h3>
                 <div className="space-y-3">
-                  {hairSystemServices.map(service => (
+                  {nateServices.map(service => (
                     <ServiceCard key={service.id} service={service} />
                   ))}
                 </div>
