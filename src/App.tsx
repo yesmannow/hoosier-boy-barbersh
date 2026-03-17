@@ -2,18 +2,17 @@ import { useState, useEffect } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Toaster } from '@/components/ui/sonner'
 import { toast } from 'sonner'
-import { LandingScreen } from '@/components/LandingScreen'
-import { ServiceSelection } from '@/components/ServiceSelection'
+import { ServiceSelectionWithSidebar } from '@/components/ServiceSelectionWithSidebar'
 import { BarberSelection } from '@/components/BarberSelection'
 import { DateTimeSelection } from '@/components/DateTimeSelection'
 import { CustomerDetails } from '@/components/CustomerDetails'
 import { Confirmation } from '@/components/Confirmation'
 import type { Service, Barber, CustomerProfile, Appointment } from '@/lib/types'
 
-type BookingStep = 'landing' | 'service' | 'barber' | 'datetime' | 'details' | 'confirmation'
+type BookingStep = 'service' | 'barber' | 'datetime' | 'details' | 'confirmation'
 
 function App() {
-  const [currentStep, setCurrentStep] = useState<BookingStep>('landing')
+  const [currentStep, setCurrentStep] = useState<BookingStep>('service')
   const [selectedService, setSelectedService] = useState<Service | null>(null)
   const [selectedBarber, setSelectedBarber] = useState<Barber | null>(null)
   const [selectedDate, setSelectedDate] = useState<string>('')
@@ -27,10 +26,6 @@ function App() {
   })
 
   const [appointments, setAppointments] = useKV<Appointment[]>('appointments', [])
-
-  const handleStartBooking = () => {
-    setCurrentStep('service')
-  }
 
   const handleSelectService = (service: Service) => {
     setSelectedService(service)
@@ -93,11 +88,6 @@ function App() {
     })
   }
 
-  const handleBackFromService = () => {
-    setCurrentStep('landing')
-    setSelectedService(null)
-  }
-
   const handleBackFromBarber = () => {
     setCurrentStep('service')
     setSelectedBarber(null)
@@ -125,14 +115,9 @@ function App() {
   return (
     <>
       <div className="min-h-screen bg-background text-foreground">
-        {currentStep === 'landing' && (
-          <LandingScreen onStartBooking={handleStartBooking} />
-        )}
-
         {currentStep === 'service' && (
-          <ServiceSelection 
+          <ServiceSelectionWithSidebar 
             onSelectService={handleSelectService}
-            onBack={handleBackFromService}
           />
         )}
 
