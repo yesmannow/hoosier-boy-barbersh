@@ -59,7 +59,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
         
         <div className="absolute inset-x-0 top-0 z-20 pt-8 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto space-y-6">
-            <div className="bg-card backdrop-blur-md rounded-2xl p-6 border border-border/50">
+            <div className="bg-card/40 backdrop-blur-md rounded-2xl p-6 border border-border/30">
               <img
                 src={shopProfile.logoImage}
                 alt={shopProfile.name}
