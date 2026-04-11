@@ -332,10 +332,17 @@ export function AutomationView({ onBack }: AutomationViewProps) {
   const [workflowStates, setWorkflowStates] = useState<Record<string, boolean>>(
     Object.fromEntries(workflowTemplates.map(w => [w.id, w.enabled]))
   )
+  const [agentStates, setAgentStates] = useState<Record<string, boolean>>(
+    Object.fromEntries(aiAgents.map(a => [a.id, a.status === 'active']))
+  )
   const [activeCategory, setActiveCategory] = useState<string>('all')
 
   const toggleWorkflow = (id: string) => {
     setWorkflowStates(prev => ({ ...prev, [id]: !prev[id] }))
+  }
+
+  const toggleAgent = (id: string) => {
+    setAgentStates(prev => ({ ...prev, [id]: !prev[id] }))
   }
 
   const connectorCategories = ['all', ...Array.from(new Set(connectors.map(c => c.category)))]
@@ -457,7 +464,7 @@ export function AutomationView({ onBack }: AutomationViewProps) {
                         variant="outline"
                         size="sm"
                         className="gap-1"
-                        onClick={() => {}}
+                        onClick={() => toggleAgent(agent.id)}
                       >
                         {agent.status === 'active' ? <><Pause size={14} /> Pause</> : <><Play size={14} /> Activate</>}
                       </Button>
@@ -534,7 +541,7 @@ export function AutomationView({ onBack }: AutomationViewProps) {
                       className="text-xs capitalize"
                       onClick={() => setActiveCategory(cat)}
                     >
-                      {cat === 'all' ? 'All' : cat.replace('-', ' ')}
+                      {cat === 'all' ? 'All' : cat.replace(/-/g, ' ')}
                     </Button>
                   ))}
                 </div>
@@ -553,7 +560,7 @@ export function AutomationView({ onBack }: AutomationViewProps) {
                               variant="outline"
                               className={`text-xs ${workflowCategoryColors[workflow.category]}`}
                             >
-                              {workflow.category.replace('-', ' ')}
+                              {workflow.category.replace(/-/g, ' ')}
                             </Badge>
                             {workflowStates[workflow.id] && (
                               <Badge variant="outline" className="text-xs border-green-500/40 text-green-400 bg-green-500/10">
