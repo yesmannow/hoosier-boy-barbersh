@@ -5,6 +5,7 @@ import { DailyScheduleView } from './DailyScheduleView'
 import { WeekView } from './WeekView'
 import { ClientsView } from './ClientsView'
 import { ShopProfileView } from './ShopProfileView'
+import { AutomationView } from './AutomationView'
 import { AppointmentDetailDrawer } from './AppointmentDetailDrawer'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -69,6 +70,9 @@ export function AdminApp({ userRole }: AdminAppProps) {
       
       case 'shop-profile':
         return <ShopProfileView onBack={() => setCurrentView('dashboard')} />
+      
+      case 'automation':
+        return <AutomationView onBack={() => setCurrentView('dashboard')} />
       
       case 'barbers':
       case 'services':
