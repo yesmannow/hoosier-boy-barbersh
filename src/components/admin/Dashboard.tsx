@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { CalendarPlus, Users, Clock, CurrencyDollar, TrendUp, XCircle, CheckCircle, Eye, CalendarBlank } from '@phosphor-icons/react'
+import { CalendarPlus, Users, Clock, CurrencyDollar, TrendUp, XCircle, CheckCircle, Eye, CalendarBlank, Robot, Lightning } from '@phosphor-icons/react'
 import { getTodayMetrics, barberProfiles, appointments, shopProfile } from '@/lib/adminData'
 import { format } from 'date-fns'
 import heroImage from '@/assets/images/20230518_134642-1024x768.jpg'
@@ -25,7 +25,8 @@ export function Dashboard({ userRole, barberId, onViewChange }: DashboardProps) 
     { label: 'Add Appointment', icon: CalendarPlus, action: () => onViewChange('schedule') },
     { label: 'View Schedule', icon: Clock, action: () => onViewChange('schedule') },
     { label: 'Client Records', icon: Users, action: () => onViewChange('clients') },
-    { label: 'Shop Profile', icon: Eye, action: () => onViewChange('shop-profile'), owner: true }
+    { label: 'Shop Profile', icon: Eye, action: () => onViewChange('shop-profile'), owner: true },
+    { label: 'Automation & AI', icon: Robot, action: () => onViewChange('automation'), owner: true }
   ]
 
   return (
@@ -166,6 +167,24 @@ export function Dashboard({ userRole, barberId, onViewChange }: DashboardProps) 
               <p className="text-sm text-muted-foreground mb-1">Appointments/Week</p>
               <p className="text-2xl font-bold text-foreground">{metrics.todayAppointments * 4}</p>
             </div>
+          </div>
+        </Card>
+      )}
+
+      {userRole === 'owner' && (
+        <Card className="p-5 border-border bg-primary/5 border-primary/30">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Robot size={22} className="text-primary" />
+              <div>
+                <h3 className="font-semibold text-foreground text-sm">AI Insights Available</h3>
+                <p className="text-xs text-muted-foreground">3 clients at risk · Upsell opportunity detected · Wednesday morning gaps</p>
+              </div>
+            </div>
+            <Button size="sm" className="gap-1.5" onClick={() => onViewChange('automation')}>
+              <Lightning size={14} />
+              View Automation Hub
+            </Button>
           </div>
         </Card>
       )}
