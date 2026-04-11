@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { User, SquaresFour, Calendar, Users, Scissors, Clock, Gear, ChartBar, Eye } from '@phosphor-icons/react'
+import { User, SquaresFour, Calendar, Users, Scissors, Clock, Gear, ChartBar, Eye, Robot } from '@phosphor-icons/react'
 import { cn } from '@/lib/utils'
 import logo from '@/assets/images/Hoosierboy_Barbershop_logo_1.png'
 import { UserRole } from '@/lib/types'
@@ -21,6 +21,7 @@ const navigation = [
   { id: 'services', label: 'Services', icon: Scissors, roles: ['owner'] },
   { id: 'availability', label: 'Availability', icon: Clock, roles: ['owner', 'barber'] },
   { id: 'analytics', label: 'Analytics', icon: ChartBar, roles: ['owner'] },
+  { id: 'automation', label: 'Automation & AI', icon: Robot, roles: ['owner'] },
   { id: 'shop-profile', label: 'Shop Profile', icon: Eye, roles: ['owner'] },
   { id: 'settings', label: 'Settings', icon: Gear, roles: ['owner'] }
 ]
