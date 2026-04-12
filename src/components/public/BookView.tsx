@@ -4,11 +4,11 @@ import { BarberSelection } from '../BarberSelection'
 import { DateTimeSelection } from '../DateTimeSelection'
 import { CustomerDetails } from '../CustomerDetails'
 import { Confirmation } from '../Confirmation'
-import { useKV } from '@github/spark/hooks'
 import { useSEO, SEO_DEFAULTS } from '@/lib/seo'
-import type { Service, Barber, CustomerProfile, Appointment } from '@/lib/types'
+import type { Service, Barber } from '@/lib/types'
 import { ArrowLeft } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
+import { useBookingApi } from '@/hooks/useBookingApi'
 
 type BookingStep = 'service' | 'barber' | 'datetime' | 'details' | 'confirmation'
 
@@ -24,14 +24,9 @@ export function BookView({ onNavigate }: BookViewProps) {
   const [selectedDate, setSelectedDate] = useState<string>('')
   const [selectedTime, setSelectedTime] = useState<string>('')
   const [customerName, setCustomerName] = useState<string>('')
+  const [bookingError, setBookingError] = useState<string>('')
 
-  const [customerProfile, setCustomerProfile] = useKV<CustomerProfile>('customer-profile', {
-    name: '',
-    phone: '',
-    email: ''
-  })
-
-  const [appointments, setAppointments] = useKV<Appointment[]>('appointments', [])
+  const { customerProfile, saveCustomerProfile, createAppointment } = useBookingApi()
 
   const handleSelectService = (service: Service) => {
     setSelectedService(service)
@@ -58,8 +53,8 @@ export function BookView({ onNavigate }: BookViewProps) {
     saveDetails: boolean
   }) => {
     if (details.saveDetails) {
-      setCustomerProfile((prev) => ({
-        ...prev,
+      saveCustomerProfile({
+        ...customerProfile,
         name: details.name,
         phone: details.phone,
         email: details.email,
@@ -67,12 +62,11 @@ export function BookView({ onNavigate }: BookViewProps) {
           serviceId: selectedService.id,
           barberId: selectedBarber.id,
           date: selectedDate
-        } : prev?.lastBooking
-      }))
+        } : customerProfile?.lastBooking
+      })
     }
 
-    const newAppointment: Appointment = {
-      id: `apt-${Date.now()}`,
+    const result = createAppointment({
       serviceId: selectedService!.id,
       barberId: selectedBarber?.id || 'any',
       date: selectedDate,
@@ -80,12 +74,15 @@ export function BookView({ onNavigate }: BookViewProps) {
       customerName: details.name,
       customerPhone: details.phone,
       customerEmail: details.email,
-      notes: details.notes,
-      status: 'confirmed',
-      createdAt: new Date().toISOString()
+      notes: details.notes
+    })
+
+    if (!result.ok) {
+      setBookingError(result.error)
+      return
     }
 
-    setAppointments((prev) => [...(prev || []), newAppointment])
+    setBookingError('')
     setCustomerName(details.name)
     setCurrentStep('confirmation')
   }
@@ -155,6 +152,12 @@ export function BookView({ onNavigate }: BookViewProps) {
           onSelectDateTime={handleSelectDateTime}
           onBack={handleBackFromDateTime}
         />
+      )}
+
+      {bookingError && currentStep === 'details' && (
+        <div className="px-4 pt-3">
+          <p className="text-sm text-destructive">{bookingError}</p>
+        </div>
       )}
 
       {currentStep === 'details' && selectedService && (
