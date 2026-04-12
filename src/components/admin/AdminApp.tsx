@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AdminLayout } from './AdminLayout'
 import { Dashboard } from './Dashboard'
 import { DailyScheduleView } from './DailyScheduleView'
@@ -11,22 +11,26 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Appointment } from '@/lib/types'
 
-export function AdminApp() {
+interface AdminAppProps {
+  userRole: 'owner' | 'barber'
+}
+
+export function AdminApp({ userRole }: AdminAppProps) {
   const [currentView, setCurrentView] = useState('dashboard')
-  const [userRole, setUserRole] = useState<'owner' | 'barber'>('owner')
-  const [barberId, setBarberId] = useState<string | undefined>(undefined)
+  const [barberId, setBarberId] = useState<string | undefined>(
+    userRole === 'barber' ? 'jimmy-bissonette' : undefined
+  )
   const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  const toggleRole = () => {
-    if (userRole === 'owner') {
-      setUserRole('barber')
+  // Update barberId when userRole changes
+  useEffect(() => {
+    if (userRole === 'barber') {
       setBarberId('jimmy-bissonette')
     } else {
-      setUserRole('owner')
       setBarberId(undefined)
     }
-  }
+  }, [userRole])
 
   const handleAppointmentClick = (appointment: Appointment) => {
     setSelectedAppointment(appointment)
@@ -98,12 +102,6 @@ export function AdminApp() {
 
   return (
     <div className="relative">
-      <div className="fixed top-4 right-4 z-50">
-        <Button onClick={toggleRole} variant="outline" className="bg-card">
-          Switch to {userRole === 'owner' ? 'Barber' : 'Owner'} View
-        </Button>
-      </div>
-      
       <AdminLayout
         currentView={currentView}
         onViewChange={setCurrentView}

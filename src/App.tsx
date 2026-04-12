@@ -9,6 +9,15 @@ type AppMode = 'public' | 'admin'
 
 function App() {
   const [appMode, setAppMode] = useState<AppMode>('public')
+  const [userRole, setUserRole] = useState<'owner' | 'barber'>('owner')
+
+  const toggleRole = () => {
+    if (userRole === 'owner') {
+      setUserRole('barber')
+    } else {
+      setUserRole('owner')
+    }
+  }
 
   return (
     <>
@@ -31,9 +40,14 @@ function App() {
           <Scissors size={16} className="mr-2" />
           Admin
         </Button>
+        {appMode === 'admin' && (
+          <Button onClick={toggleRole} variant="outline" size="sm" className="bg-card shadow-lg">
+            Switch to {userRole === 'owner' ? 'Barber' : 'Owner'} View
+          </Button>
+        )}
       </div>
 
-      {appMode === 'public' ? <PublicApp /> : <AdminApp />}
+      {appMode === 'public' ? <PublicApp /> : <AdminApp userRole={userRole} />}
       
       <Toaster />
     </>
